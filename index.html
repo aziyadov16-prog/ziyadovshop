@@ -3,124 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziyadov Shop | Premium SMM & Game</title>
+    <title>Ziyadov Panel | Professional SMM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #ff9800; --bg: #0f0f0f; --card-bg: #1a1a1a; --text: #ffffff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; overflow-x: hidden; padding-bottom: 100px; }
+        :root { --primary: #ff9800; --bg: #0b0b0b; --card: #161616; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding-bottom: 80px; }
         
-        /* Başlıq Bölməsi */
-        .header { background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%); padding: 30px 20px; text-align: center; border-bottom: 2px solid var(--primary); box-shadow: 0 5px 20px rgba(255,152,0,0.2); }
-        .header h1 { margin: 0; font-size: 28px; letter-spacing: 2px; color: var(--primary); text-shadow: 2px 2px 10px rgba(255,152,0,0.3); }
+        /* Üst Panel */
+        .top-bar { background: #1a1a1a; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
+        .logo { font-weight: 800; color: var(--primary); font-size: 20px; }
+        .balance-box { background: #252525; padding: 5px 12px; border-radius: 20px; font-size: 13px; border: 1px solid var(--primary); }
 
-        /* Elan Zolağı */
-        .marquee { background: #222; color: var(--primary); padding: 8px 0; font-size: 13px; font-weight: bold; }
+        /* Gmail Giriş Modalı (Görünüş üçün) */
+        .auth-notice { background: #222; margin: 15px; padding: 15px; border-radius: 10px; text-align: center; border: 1px dashed #444; }
+        .gmail-btn { background: white; color: black; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 13px; display: inline-block; margin-top: 10px; }
 
-        /* Əsas Grid Sistemi */
-        .container { padding: 20px; max-width: 600px; margin: 0 auto; }
-        .section-title { font-size: 18px; margin: 20px 0 15px 5px; border-left: 4px solid var(--primary); padding-left: 10px; }
-        
-        .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-
-        /* 3D Kartlar */
-        .card { background: var(--card-bg); border-radius: 18px; padding: 25px 15px; text-align: center; border: 1px solid #333; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); text-decoration: none; color: white; display: block; position: relative; overflow: hidden; }
-        .card:active { transform: scale(0.92) translateY(5px); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
-        .card i { font-size: 40px; margin-bottom: 15px; color: var(--primary); filter: drop-shadow(0 0 5px rgba(255,152,0,0.5)); }
-        .card h3 { margin: 10px 0 5px 0; font-size: 15px; }
-        .card p { margin: 0; font-size: 11px; color: #888; }
-        
-        /* Populyar Etiketi */
-        .badge { position: absolute; top: 10px; right: -20px; background: red; color: white; font-size: 10px; padding: 2px 25px; transform: rotate(45deg); font-weight: bold; }
+        /* Xidmət Kartları */
+        .container { padding: 15px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .service-card { background: var(--card); border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #222; transition: 0.3s; cursor: pointer; }
+        .service-card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .service-card i { font-size: 35px; color: var(--primary); margin-bottom: 10px; }
+        .service-card h3 { font-size: 14px; margin: 5px 0; }
 
         /* Alt Menyu (Dolph Game Stil) */
-        .navbar { position: fixed; bottom: 0; left: 0; width: 100%; background: #161616; display: flex; justify-content: space-around; align-items: center; padding: 12px 0 25px 0; border-top: 1px solid #333; z-index: 9999; }
-        .nav-link { color: #666; text-decoration: none; font-size: 11px; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .nav-link i { font-size: 22px; margin-bottom: 5px; }
+        .footer-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #111; display: flex; justify-content: space-around; align-items: center; padding: 10px 0 25px 0; border-top: 1px solid #333; }
+        .nav-link { color: #777; text-decoration: none; font-size: 11px; text-align: center; }
+        .nav-link i { font-size: 20px; display: block; margin-bottom: 3px; }
         .nav-link.active { color: var(--primary); }
-
-        /* Mərkəzi Böyük + Düyməsi */
-        .plus-wrapper { position: relative; top: -30px; }
-        .plus-btn { background: linear-gradient(135deg, #ff9800, #ff5722); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; border: 5px solid var(--bg); box-shadow: 0 0 20px rgba(255,152,0,0.5); text-decoration: none; transition: 0.3s; }
-        .plus-btn:active { transform: rotate(90deg) scale(0.8); }
+        
+        /* İdarəetmə (+) Düyməsi */
+        .admin-plus { background: var(--primary); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-size: 24px; margin-top: -35px; border: 5px solid var(--bg); box-shadow: 0 0 15px rgba(255,152,0,0.4); }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>ZIYADOV SHOP</h1>
+<div class="top-bar">
+    <div class="logo">ZIYADOV PANEL</div>
+    <div class="balance-box">Balans: 0.00 AZN</div>
 </div>
 
-<div class="marquee">
-    <marquee>🔥 Instagram 1K İzləyici cəmi 0.80 AZN! 🔥 PUBG UC yükləmələri aktivdir! 🔥 Keyfiyyətli Panel Xidmətləri!</marquee>
+<div class="auth-notice">
+    <span>Xidmətlərdən yararlanmaq üçün daxil olun</span><br>
+    <a href="#" class="gmail-btn"><i class="fab fa-google"></i> Gmail ilə giriş</a>
 </div>
 
 <div class="container">
-    <div class="section-title">SMM Xidmətləri (Sol)</div>
-    <div class="main-grid">
-        <a href="https://t.me/ziyadov_admin" class="card">
-            <div class="badge">YENİ</div>
+    <div class="grid">
+        <div class="service-card" onclick="alert('Instagram xidmətləri bölməsi hazırlanır...')">
             <i class="fab fa-instagram"></i>
             <h3>Instagram</h3>
-            <p>İzləyici, Bəyəni</p>
-        </a>
-        <a href="https://t.me/ziyadov_admin" class="card">
+        </div>
+        <div class="service-card" onclick="alert('TikTok xidmətləri bölməsi hazırlanır...')">
             <i class="fab fa-tiktok"></i>
             <h3>TikTok</h3>
-            <p>Baxış, Trend</p>
-        </a>
-    </div>
-
-    <div class="section-title">Oyun & Panel (Sağ)</div>
-    <div class="main-grid">
-        <a href="https://t.me/ziyadov_admin" class="card">
-            <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="service-card" onclick="alert('PUBG UC bölməsi hazırlanır...')">
+            <i class="fas fa-mobile-alt"></i>
             <h3>PUBG Mobile</h3>
-            <p>UC, Hesablar</p>
-        </a>
-        <a href="https://t.me/ziyadov_admin" class="card">
-            <i class="fas fa-terminal"></i>
-            <h3>Ana Panel</h3>
-            <p>Admin Paneli</p>
-        </a>
-    </div>
-    
-    <div class="section-title">Digər Xidmətlər</div>
-    <div class="main-grid">
-        <a href="https://t.me/ziyadov_admin" class="card">
-            <i class="fab fa-youtube"></i>
-            <h3>YouTube</h3>
-        </a>
-        <a href="https://t.me/ziyadov_admin" class="card">
-            <i class="fab fa-telegram"></i>
-            <h3>Telegram</h3>
-        </a>
+        </div>
+        <div class="service-card" onclick="alert('Balans artırma sistemi üçün Telegram-a yazın.')">
+            <i class="fas fa-wallet"></i>
+            <h3>Balans Artır</h3>
+        </div>
     </div>
 </div>
 
-<nav class="navbar">
-    <a href="#" class="nav-link active">
-        <i class="fas fa-home"></i>
-        <span>Ana Səhifə</span>
-    </a>
-    <a href="#" class="nav-link">
-        <i class="fas fa-layer-group"></i>
-        <span>Kateqoriya</span>
-    </a>
-    
-    <div class="plus-wrapper">
-        <a href="https://github.com/aziyadov16-prog/ziyadovshop/edit/main/index.html" class="plus-btn">
-            <i class="fas fa-plus"></i>
-        </a>
-    </div>
-
-    <a href="#" class="nav-link">
-        <i class="fas fa-shopping-cart"></i>
-        <span>Sifarişlər</span>
-    </a>
-    <a href="#" class="nav-link">
-        <i class="fas fa-user-circle"></i>
-        <span>Profil</span>
-    </a>
+<nav class="footer-nav">
+    <a href="#" class="nav-link active"><i class="fas fa-home"></i>Ana Səhifə</a>
+    <a href="#" class="nav-link"><i class="fas fa-th-large"></i>Kateqoriya</a>
+    <a href="https://github.com/aziyadov16-prog/ziyadovshop/edit/main/index.html" class="admin-plus"><i class="fas fa-plus"></i></a>
+    <a href="#" class="nav-link"><i class="fas fa-shopping-basket"></i>Sifarişlər</a>
+    <a href="#" class="nav-link"><i class="fas fa-user"></i>Profil</a>
 </nav>
 
 </body>
