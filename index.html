@@ -1,143 +1,62 @@
-O<!DOCTYPE html>
-<html lang="az">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziyadov Panel | Professional SMM</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --primary: #ff9800; --bg: #0b0b0b; --card: #161616; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding-bottom: 80px; }
-        
-        /* Üst Panel */
-        .top-bar { background: #1a1a1a; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
-        .logo { font-weight: 800; color: var(--primary); font-size: 20px; }
-        .balance-box { background: #252525; padding: 5px 12px; border-radius: 20px; font-size: 13px; border: 1px solid var(--primary); }
-
-        /* Gmail Giriş Modalı (Görünüş üçün) */
-        .auth-notice { background: #222; margin: 15px; padding: 15px; border-radius: 10px; text-align: center; border: 1px dashed #444; }
-        .gmail-btn { background: white; color: black; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 13px; display: inline-block; margin-top: 10px; }
-
-        /* Xidmət Kartları */
-        .container { padding: 15px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .service-card { background: var(--card); border-radius: 15px; padding: 20px; text-align: center; border: 1px solid #222; transition: 0.3s; cursor: pointer; }
-        .service-card:hover { border-color: var(--primary); transform: translateY(-3px); }
-        .service-card i { font-size: 35px; color: var(--primary); margin-bottom: 10px; }
-        .service-card h3 { font-size: 14px; margin: 5px 0; }
-
-        /* Alt Menyu (Dolph Game Stil) */
-        .footer-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #111; display: flex; justify-content: space-around; align-items: center; padding: 10px 0 25px 0; border-top: 1px solid #333; }
-        .nav-link { color: #777; text-decoration: none; font-size: 11px; text-align: center; }
-        .nav-link i { font-size: 20px; display: block; margin-bottom: 3px; }
-        .nav-link.active { color: var(--primary); }
-        
-        /* İdarəetmə (+) Düyməsi */
-        .admin-plus { background: var(--primary); width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: black; font-size: 24px; margin-top: -35px; border: 5px solid var(--bg); box-shadow: 0 0 15px rgba(255,152,0,0.4); }
-    </style>
-</head>
-<body>
-
-<div class="top-bar">
-    <div class="logo">ZIYADOV PANEL</div>
-    <div class="balance-box">Balans: 0.00 AZN</div>
-</div>
-
-<div class="auth-notice">
-    <span>Xidmətlərdən yararlanmaq üçün daxil olun</span><br>
-    <a href="#" class="gmail-btn"><i class="fab fa-google"></i> Gmail ilə giriş</a>
-</div>
-
-<div class="container">
-    <div class="grid">
-        <div class="service-card" onclick="alert('Instagram xidmətləri bölməsi hazırlanır...')">
-            <i class="fab fa-instagram"></i>
-            <h3>Instagram</h3>
-        </div>
-        <div class="service-card" onclick="alert('TikTok xidmətləri bölməsi hazırlanır...')">
-            <i class="fab fa-tiktok"></i>
-            <h3>TikTok</h3>
-        </div>
-        <div class="service-card" onclick="alert('PUBG UC bölməsi hazırlanır...')">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>PUBG Mobile</h3>
-        </div>
-        <div class="service-card" onclick="alert('Balans artırma sistemi üçün Telegram-a yazın.')">
-            <i class="fas fa-wallet"></i>
-            <h3>Balans Artır</h3>
-        </div>
-    </div>
-</div>
-
-<nav class="footer-nav">
-    <a href="#" class="nav-link active"><i class="fas fa-home"></i>Ana Səhifə</a>
-    <a href="#" class="nav-link"><i class="fas fa-th-large"></i>Kateqoriya</a>
-    <a href="https://github.com/aziyadov16-prog/ziyadovshop/edit/main/index.html" class="admin-plus"><i class="fas fa-plus"></i></a>
-    <a href="#" class="nav-link"><i class="fas fa-shopping-basket"></i>Sifarişlər</a>
-    <a href="#" class="nav-link"><i class="fas fa-user"></i>Profil</a>
-</nav>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziyadov Panel | SMM</title>
+    <title>Ziyadov Shop</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #ff9800; --bg: #0b0b0b; --card: #161616; --text: #fff; }
-        body { background: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; padding-bottom: 80px; }
-        .top-bar { background: #1a1a1a; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
-        .logo { font-weight: bold; color: var(--primary); }
-        .balance { background: #252525; padding: 5px 10px; border-radius: 20px; font-size: 12px; border: 1px solid var(--primary); }
-        .container { padding: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .service-card { background: var(--card); border-radius: 15px; padding: 25px; text-align: center; border: 1px solid #222; text-decoration: none; color: #fff; transition: 0.3s; }
-        .service-card:active { transform: scale(0.95); border-color: var(--primary); }
-        .service-card i { font-size: 40px; color: var(--primary); margin-bottom: 10px; }
-        .service-card h3 { font-size: 14px; margin: 0; }
-        /* Alt Menyu */
-        .footer-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #111; display: flex; justify-content: space-around; align-items: center; padding: 10px 0 25px 0; border-top: 1px solid #333; }
-        .nav-link { color: #777; text-decoration: none; font-size: 11px; text-align: center; }
-        .nav-link i { font-size: 20px; display: block; margin-bottom: 3px; }
-        .nav-link.active { color: var(--primary); }
-        .plus-btn { background: var(--primary); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 24px; margin-top: -30px; border: 4px solid var(--bg); }
+        body { background: #0b0b0b; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; }
+        .header { text-align: center; padding: 20px 0; border-bottom: 2px solid #ff9800; margin-bottom: 20px; }
+        .product-card { background: #1a1a1a; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .info h3 { margin: 0; font-size: 16px; color: #ff9800; }
+        .info p { margin: 5px 0 0; font-size: 12px; color: #aaa; }
+        .price { font-weight: bold; font-size: 17px; color: #fff; margin-right: 10px; }
+        .buy-btn { background: #ff9800; color: #000; border: none; padding: 10px 15px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .buy-btn:active { transform: scale(0.9); }
+        .category-title { font-size: 14px; color: #ff9800; margin: 10px 0; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-<div class="top-bar">
-    <div class="logo">ZIYADOV PANEL</div>
-    <div class="balance">Balans: 0.00 AZN</div>
+<div class="header">
+    <h2 style="margin:0;">ZİYADOV SHOP 🛍️</h2>
+    <p style="font-size: 12px; color: #888;">Keyfiyyətin tək ünvanı</p>
 </div>
 
-<div class="container">
-    <a href="instagram.html" class="service-card">
-        <i class="fab fa-instagram"></i>
-        <h3>Instagram</h3>
-    </a>
-    <a href="tiktok.html" class="service-card">
-        <i class="fab fa-tiktok"></i>
-        <h3>TikTok</h3>
-    </a>
-    <a href="pubg.html" class="service-card">
-        <i class="fas fa-gamepad"></i>
-        <h3>PUBG Mobile</h3>
-    </a>
-    <a href="panel.html" class="service-card">
-        <i class="fas fa-terminal"></i>
-        <h3>Ana Panel</h3>
-    </a>
+<div class="category-title">Premium Hesablar</div>
+<div class="product-card">
+    <div class="info"><h3>Netflix Premium</h3><p>4K UHD / 1 Aylıq</p></div>
+    <div class="price">3.50 AZN</div>
+    <button class="buy-btn" onclick="sendOrder('Netflix Premium')">AL</button>
 </div>
 
-<nav class="footer-nav">
-    <a href="index.html" class="nav-link active"><i class="fas fa-home"></i>Ana Səhifə</a>
-    <a href="#" class="nav-link"><i class="fas fa-th-large"></i>Kateqoriya</a>
-    <a href="https://github.com/aziyadov16-prog/ziyadovshop/edit/main/index.html" class="plus-btn"><i class="fas fa-plus"></i></a>
-    <a href="#" class="nav-link"><i class="fas fa-shopping-basket"></i>Səbət</a>
-    <a href="#" class="nav-link"><i class="fas fa-user"></i>Profil</a>
-</nav>
+<div class="product-card">
+    <div class="info"><h3>Spotify Premium</h3><p>Şəxsi Hesab / 1 Aylıq</p></div>
+    <div class="price">2.00 AZN</div>
+    <button class="buy-btn" onclick="sendOrder('Spotify Premium')">AL</button>
+</div>
+
+<div class="category-title">Oyun Xidmətləri</div>
+<div class="product-card">
+    <div class="info"><h3>PUBG 60 UC</h3><p>Anında Yükləmə</p></div>
+    <div class="price">1.70 AZN</div>
+    <button class="buy-btn" onclick="sendOrder('60 UC')">AL</button>
+</div>
+
+<script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+    tg.MainButton.setText("MAĞAZADAN ÇIX");
+    tg.MainButton.show();
+    tg.MainButton.onClick(() => tg.close());
+
+    function sendOrder(item) {
+        tg.sendData("Sifariş: " + item);
+        tg.close();
+    }
+</script>
 
 </body>
 </html>
